@@ -4,6 +4,8 @@
 
 Synopsis: <trigger> <filter>"""
 
+#  Copyright (c) 2022 Manuel Schneider
+
 from albert import *
 from urllib import request, parse
 import json
