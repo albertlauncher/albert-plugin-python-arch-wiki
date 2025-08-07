@@ -9,13 +9,13 @@ from urllib import request, parse
 from albert import *
 
 md_iid = "3.0"
-md_version = '2.0'
+md_version = '2.1'
 md_name = "Arch Linux Wiki"
 md_description = "Search Arch Linux Wiki articles"
 md_license = "MIT"
 md_url = "https://github.com/albertlauncher/albert-plugin-python-arch-wiki"
-md_authors = "@manuelschneid3r"
-md_maintainers = ["@manuelschneid3r"]
+md_authors = ["@ManuelSchneid3r"]
+md_maintainers = ["@ManuelSchneid3r"]
 
 
 class Plugin(PluginInstance, TriggerQueryHandler):
