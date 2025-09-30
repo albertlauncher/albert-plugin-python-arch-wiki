@@ -8,7 +8,7 @@ from urllib import request, parse
 
 from albert import *
 
-md_iid = "3.0"
+md_iid = "4.0"
 md_version = '2.1'
 md_name = "Arch Linux Wiki"
 md_description = "Search Arch Linux Wiki articles"
@@ -23,7 +23,6 @@ class Plugin(PluginInstance, TriggerQueryHandler):
     baseurl = 'https://wiki.archlinux.org/api.php'
     search_url = "https://wiki.archlinux.org/index.php?search=%s"
     user_agent = "org.albert.extension.python.archwiki"
-    iconUrls = [f"file:{Path(__file__).parent}/arch.svg"]
 
     def __init__(self):
         PluginInstance.__init__(self)
@@ -31,6 +30,10 @@ class Plugin(PluginInstance, TriggerQueryHandler):
 
     def defaultTrigger(self):
         return 'awiki '
+
+    @staticmethod
+    def makeIcon():
+        return makeImageIcon(Path(__file__).parent / "arch.svg")
 
     def handleTriggerQuery(self, query):
         stripped = query.string.strip()
@@ -65,7 +68,7 @@ class Plugin(PluginInstance, TriggerQueryHandler):
                     results.append(StandardItem(id=self.id(),
                                                 text=title,
                                                 subtext=summary if summary else url,
-                                                iconUrls=self.iconUrls,
+                                                iconFactory=self.makeIcon,
                                                 actions=[
                                                     Action("open", "Open article", lambda u=url: openUrl(u)),
                                                     Action("copy", "Copy URL", lambda u=url: setClipboardText(u))
@@ -76,12 +79,12 @@ class Plugin(PluginInstance, TriggerQueryHandler):
                 query.add(StandardItem(id=self.id(),
                                        text="Search '%s'" % query.string,
                                        subtext="No results. Start online search on Arch Wiki",
-                                       iconUrls=self.iconUrls,
+                                       iconFactory=self.makeIcon,
                                        actions=[Action("search", "Open search",
                                                        lambda s=query.string: openUrl(self.search_url % s))]))
 
         else:
             query.add(StandardItem(id=self.id(),
                                    text=md_name,
-                                   iconUrls=self.iconUrls,
+                                   iconFactory=self.makeIcon,
                                    subtext="Enter a query to search on the Arch Wiki"))
