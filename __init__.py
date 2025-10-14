@@ -68,7 +68,7 @@ class Plugin(PluginInstance, TriggerQueryHandler):
                     results.append(StandardItem(id=self.id(),
                                                 text=title,
                                                 subtext=summary if summary else url,
-                                                iconFactory=self.makeIcon,
+                                                icon_factory=self.makeIcon,
                                                 actions=[
                                                     Action("open", "Open article", lambda u=url: openUrl(u)),
                                                     Action("copy", "Copy URL", lambda u=url: setClipboardText(u))
@@ -79,12 +79,12 @@ class Plugin(PluginInstance, TriggerQueryHandler):
                 query.add(StandardItem(id=self.id(),
                                        text="Search '%s'" % query.string,
                                        subtext="No results. Start online search on Arch Wiki",
-                                       iconFactory=self.makeIcon,
+                                       icon_factory=self.makeIcon,
                                        actions=[Action("search", "Open search",
                                                        lambda s=query.string: openUrl(self.search_url % s))]))
 
         else:
             query.add(StandardItem(id=self.id(),
                                    text=md_name,
-                                   iconFactory=self.makeIcon,
+                                   icon_factory=self.makeIcon,
                                    subtext="Enter a query to search on the Arch Wiki"))
