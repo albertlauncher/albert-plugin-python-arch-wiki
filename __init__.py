@@ -18,7 +18,7 @@ md_authors = ["@ManuelSchneid3r"]
 md_maintainers = ["@ManuelSchneid3r"]
 
 
-class Plugin(PluginInstance, TriggerQueryHandler):
+class Plugin(PluginInstance, ThreadedQueryHandler):
 
     baseurl = 'https://wiki.archlinux.org/api.php'
     search_url = "https://wiki.archlinux.org/index.php?search=%s"
@@ -26,7 +26,7 @@ class Plugin(PluginInstance, TriggerQueryHandler):
 
     def __init__(self):
         PluginInstance.__init__(self)
-        TriggerQueryHandler.__init__(self)
+        ThreadedQueryHandler.__init__(self)
 
     def defaultTrigger(self):
         return 'awiki '
@@ -35,7 +35,7 @@ class Plugin(PluginInstance, TriggerQueryHandler):
     def makeIcon():
         return makeImageIcon(Path(__file__).parent / "arch.svg")
 
-    def handleTriggerQuery(self, query):
+    def handleThreadedQuery(self, query):
         stripped = query.string.strip()
         if stripped:
 
