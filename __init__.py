@@ -34,7 +34,7 @@ class Plugin(PluginInstance, GeneratorQueryHandler):
 
     @staticmethod
     def makeIcon():
-        return makeImageIcon(Path(__file__).parent / "arch.svg")
+        return Icon.image(Path(__file__).parent / "arch.svg")
 
     def fetch(self, query: str, batch_size: int, offset: int):
 
