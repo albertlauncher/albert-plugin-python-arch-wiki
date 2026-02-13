@@ -105,11 +105,11 @@ class Plugin(PluginInstance, GeneratorQueryHandler):
             yield [
                 StandardItem(
                     id=self.id(),
-                    text="Search '%s'" % query.string,
+                    text="Search '%s'" % query,
                     subtext="No results. Start online search on Arch Wiki",
                     icon_factory=self.makeIcon,
                     actions=[Action("search", "Open search",
-                                    lambda s=query.string: openUrl(self.search_url % s))]
+                                    lambda s=query: openUrl(self.search_url % s))]
                 )
             ]
             return
