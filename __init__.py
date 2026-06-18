@@ -9,7 +9,7 @@ from urllib import request, parse
 
 from albert import *
 
-md_iid = "5.0"
+md_iid = "6.0"
 md_version = "2.2.0"
 md_name = "Arch Linux Wiki"
 md_description = "Search Arch Linux Wiki articles"
@@ -94,7 +94,7 @@ class Plugin(PluginInstance, GeneratorQueryHandler):
         # avoid rate limiting
         for _ in range(50):
             sleep(0.01)
-            if not ctx.isValid:
+            if not ctx.is_valid:
                 return
 
 
