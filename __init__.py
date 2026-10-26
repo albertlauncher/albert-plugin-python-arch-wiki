@@ -10,7 +10,7 @@ from urllib import request, parse
 from albert import *
 
 md_iid = "5.0"
-md_version = "2.2.1"
+md_version = "2.2.2"
 md_name = "Arch Linux Wiki"
 md_description = "Search Arch Linux Wiki articles"
 md_license = "MIT"
